@@ -61,3 +61,31 @@ class GenGuardEscrow:
         self.status = "RESOLVED"
         self.winner = self.freelancer
         gl.transfer(self.freelancer, self.amount)
+        # GenGuard: AI-Powered Autonomous Escrow Contract
+
+GenGuard is an Intelligent Contract built on GenLayer GenVM. It bridges decentralized escrow settlements with AI-driven web validation and automated dispute resolution.
+
+## Key Features
+
+- **Non-Deterministic Consensus Validation**: Utilizes GenLayer's AI Consensus Engine to read external deliverable links and evaluate dispute rationale objectively.
+- **Automated Dispute Resolution**: Eliminates manual third-party arbitrators by programmatically analyzing work quality against specifications.
+- **Timelocked Auto-Release**: Protects freelancers by enabling automated funds release if the client fails to respond within the pre-agreed timeout period.
+- **State-Enforced Escrow**: Securely locks funds on-chain until explicit approval or AI consensus resolution.
+
+## Contract Architecture
+
+- `__init__`: Initializes client, freelancer, deliverable specs, and timeout window.
+- `submit_work`: Records proof of completion and starts the dispute window timer.
+- `release_payment`: Manual release triggered by the client upon satisfactory delivery.
+- `auto_release_payment`: Timelocked release accessible to freelancer if client exceeds timeout duration.
+- `raise_dispute`: Invokes GenLayer AI consensus engine to inspect proof links against client complaints and execute payout to the winning party.
+
+## Deployment & Execution (GenLayer Studio)
+
+1. Open [GenLayer Studio](https://studio.genlayer.fast).
+2. Create a file named `GenGuardEscrow.py` and paste the contract code.
+3. Pass constructor arguments:
+   - `freelancer`: Valid 0x wallet address.
+   - `deliverable_link`: Project requirements link.
+   - `timeout_seconds`: Dispute response window in seconds.
+4. Deploy to GenLayer Simnet / Consensus network.
